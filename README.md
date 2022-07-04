@@ -927,7 +927,7 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
   - **[Será validado que não é possível alterar uma venda que não existe]**
     - Se a venda for inexistente o resultado retornado deverá ser conforme exibido abaixo, com um status http `404`:
     ```json
-      { "message": "Product not found" }
+      { "message": "Sale not found" }
     ```
 
   - **[Será validado que é possível alterar uma venda com sucesso]**
