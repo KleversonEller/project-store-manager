@@ -1,5 +1,5 @@
 require('dotenv').config();
-const connection = require('../helpers/connection');
+const connection = require('./connection');
 
 const DATABASE = process.env.MYSQL_DATABASE;
 
