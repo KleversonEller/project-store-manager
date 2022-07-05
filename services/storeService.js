@@ -14,7 +14,14 @@ const findForId = async (id) => {
   return result;
 };
 
+const newProduct = async (nameProduct) => {
+  const result = await storeModel.newProduct(nameProduct);
+
+  return result;
+}
+
 module.exports = {
   getAll,
   findForId,
+  newProduct,
 };
