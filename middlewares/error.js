@@ -1,18 +1,24 @@
 module.exports = (err, _req, res, _next) => {
-    if (err.isJoi) return res.status(400).json({ error: { message: err.details[0].message } });
+  const statusByErrorCode = {
+    'any.required': 400,
+    'string.min': 422,
+    notFound: 404,
+    invalidData: 400,
+    alreadyExists: 409,
+  };
 
-    if (err.code) {
-        const statusByErrorCode = {
-          notFound: 404,
-          invalidData: 400,
-          alreadyExists: 409,
-    };
+  if (err.isJoi) {
+    const status = statusByErrorCode[err.details[0].type] || 500;
 
-    const status = statusByErrorCode[err.code] || 500;
+    return res.status(status).json({ message: err.details[0].message });
+  }
 
-    return res.status(status).json(err);
-    };
+  if (err.code) {
+  const status = statusByErrorCode[err.code] || 500;
 
-    console.error(err);
-    return res.status(500).json({ message: 'Internal server error' });
+  return res.status(status).json(err);
+  };
+
+  console.error(err);
+  return res.status(500).json({ message: 'Internal server error' });
 };
