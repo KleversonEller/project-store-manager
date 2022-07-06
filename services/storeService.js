@@ -58,9 +58,20 @@ const newSales = async (arraySales) => {
   return [test];
 };
 
+const updateProduct = async (id, name) => {
+  const validId = await findForId(id);
+
+  if (validId.error) return validId;
+
+  const result = await storeModel.updateProduct(id, name);
+
+  return result;
+};
+
 module.exports = {
   getAll,
   findForId,
   newProduct,
   newSales,
+  updateProduct,
 };
