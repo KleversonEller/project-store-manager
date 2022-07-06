@@ -7,5 +7,6 @@ router.use(express.json());
 router.get('/', storeController.getAll);
 router.get('/:id', storeController.findForId);
 router.post('/', storeController.newProduct);
+router.put('/:id', storeController.updateProduct);
 
 module.exports = router;
