@@ -5,7 +5,7 @@ const storeService = require('../../../services/storeService');
 const storeController = require('../../../controllers/storeController');
 
 describe('Ao chamar o controller de findForId', () => {
-  describe('quando existem produtos no banco de dados', async () => {
+  describe('quando existem produtos no banco de dados', () => {
     const response = {};
     const request = {};
 
@@ -43,7 +43,7 @@ describe('Ao chamar o controller de findForId', () => {
 });
 
 describe('Ao chamar o controller de newProduct', () => {
-  describe('quando inserir produtos com sucesso', async () => {
+  describe('quando inserir produtos com sucesso', () => {
     const response = {};
     const request = {};
 
@@ -81,7 +81,7 @@ describe('Ao chamar o controller de newProduct', () => {
 });
 
 describe('Ao chamar o controller de newSales', () => {
-  describe('quando inserir vendas com sucesso', async () => {
+  describe('quando inserir vendas com sucesso', () => {
     const response = {};
     const request = {};
 
