@@ -1,10 +1,7 @@
-require('dotenv').config();
 const connection = require('./connection');
 
-const DATABASE = process.env.MYSQL_DATABASE;
-
 const getAll = async () => {
-  const query = `SELECT * FROM ${DATABASE}.products;`;
+  const query = 'SELECT * FROM StoreManager.products;';
 
   const [result] = await connection.execute(query);
 
@@ -12,7 +9,7 @@ const getAll = async () => {
 };
 
 const findForId = async (id) => {
-  const query = `SELECT * FROM ${DATABASE}.products WHERE id=?;`;
+  const query = 'SELECT * FROM StoreManager.products WHERE id=?;';
 
   const [result] = await connection.execute(query, [id]);
 
@@ -20,7 +17,7 @@ const findForId = async (id) => {
 };
 
 const newProduct = async (nameProduct) => {
-  const query = `INSERT INTO ${DATABASE}.products (name) VALUES (?);`;
+  const query = 'INSERT INTO StoreManager.products (name) VALUES (?);';
 
   const [result] = await connection.execute(query, [nameProduct]);
 
@@ -28,11 +25,11 @@ const newProduct = async (nameProduct) => {
 };
 
 const newSales = async (arraySales) => {
-  const querySales = `INSERT INTO ${DATABASE}.sales (date) VALUES (NOW ());`;
+  const querySales = 'INSERT INTO StoreManager.sales (date) VALUES (NOW ());';
   const idSale = await connection.execute(querySales).then(([id]) => id.insertId);
 
   const querySalesProduct = `
-  INSERT INTO ${DATABASE}.sales_products (sale_id, product_id, quantity) VALUES (?,?,?);`;
+  INSERT INTO StoreManager.sales_products (sale_id, product_id, quantity) VALUES (?,?,?);`;
 
   arraySales.forEach(async (objeto) => {
     await connection
